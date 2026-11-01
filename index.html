@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كتالوج دليل خدمة طوارئ المحاماة | Smart Legal Advisor</title>
+    <!-- Google Fonts: Tajawal -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
+            --gold-primary: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #F3E5AB 0%, #D4AF37 50%, #AA7C11 100%);
+            --card-bg: rgba(30, 41, 59, 0.75);
+            --text-light: #F8FAFC;
+            --text-muted: #CBD5E1;
+            --alert-red: #EF4444;
+            --success-green: #10B981;
+            --border-glow: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-light);
+            min-height: 100vh;
+            padding-bottom: 3rem;
+            overflow-x: hidden;
+        }
+
+        /* Floating Audio Controller */
+        .audio-player-widget {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            z-index: 999;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--gold-primary);
+            padding: 10px 18px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-btn {
+            background: var(--gold-gradient);
+            border: none;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            color: #000;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease;
+        }
+
+        .audio-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .audio-info {
+            font-size: 0.85rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+        }
+
+        /* Header & Hero */
+        header {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold-primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            color: var(--gold-primary);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 900;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .welcome-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            text-align: justify;
+        }
+
+        /* Catalogue Container */
+        .catalogue-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+        }
+
+        .step-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 2rem;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 850px) {
+            .step-card {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-primary);
+        }
+
+        .step-badge {
+            display: inline-block;
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 900;
+            font-size: 1rem;
+            padding: 4px 14px;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .step-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-text {
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .alert-box {
+            background: rgba(239, 68, 68, 0.12);
+            border-right: 4px solid var(--alert-red);
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1.2rem;
+            font-size: 0.92rem;
+            color: #FCA5A5;
+            line-height: 1.7;
+        }
+
+        .img-preview-wrapper {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-glow);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+            background: #000;
+        }
+
+        .img-preview-wrapper img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .step-card:hover .img-preview-wrapper img {
+            transform: scale(1.04);
+        }
+
+        /* Footer Signature */
+        .signature-card {
+            max-width: 1000px;
+            margin: 3rem auto 1rem;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(30, 41, 59, 0.6) 100%);
+            border: 1px solid var(--gold-primary);
+            border-radius: 20px;
+        }
+
+        .signature-card h3 {
+            color: var(--gold-primary);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Audio Player Controller -->
+    <div class="audio-player-widget">
+        <button class="audio-btn" id="playAudioBtn" onclick="toggleAudio()">
+            <i class="fa-solid fa-music" id="audioIcon"></i>
+        </button>
+        <span class="audio-info" id="audioStatusText">موسيقى الكتالوج (Spring.mp3) 🎵</span>
+        <audio id="bgMusic" loop src="Spring.mp3" preload="auto"></audio>
+    </div>
+
+    <!-- Header Section -->
+    <header>
+        <div class="app-badge">
+            <i class="fa-solid fa-shield-halved"></i> Smart Legal Advisor
+        </div>
+        <h1>كتالوج الاستخدام الصحيح لخدمة طوارئ المحاماة ⚖️✨</h1>
+        
+        <div class="welcome-card">
+            <p>
+                <strong>مقدمه :</strong> الساده مستخدمي تطبيق Smart Legal Advisor في بداية يسعدني ان اهنئكم انه بشرف عضويتكم وتحميلكم واستخدامكم للتطبيق فقد اثبت وجوده ونجح نجاح باهر في فترة زمنيه قصيره، وتحديدا في خدمة طلب محامي طوارئ وتقديم الخدمات والاجراءات القانونيه السريعه في كل مكان وموقع يحتاج فيه المستخدم لإجراء قانوني سريع ومحدد القيمه. وهنا شرح تفص تفصيلي للخدمه لأنضمام مذيد من المستخدمين وطلبها بطريقه صحيحه حتي لايتم إلغاؤها . 🌟🏛️
+            </p>
+        </div>
+    </header>
+
+    <!-- Catalogue Content -->
+    <div class="catalogue-container">
+
+        <!-- Step 1 -->
+        <div class="step-card">
+            <div>
+                <span class="step-badge">الخطوة الأولى 💳</span>
+                <div class="step-title">
+                    <i class="fa-solid fa-wallet" style="color: var(--gold-primary);"></i> شحن المحفظة وسداد الأتعاب
+                </div>
+                <p class="step-text">
+                    اول خطوه بعد التسجيل للمستخدمين ان يشحن المستخدم محفظته التي بالتطبيق وذلك لعدم الاخلال بوقت وجهد واتعاب المحامي المطلوب منه التوجه لك لإنهاء اجراء قانوني سريع او لمذيد من التأمين وبناء الثقه بالتطبيق لايقوم المستخدم بشحن المحفظه وإنما يدفع المستخدم مباشرتأ نقدي للمحامي يدا بيد وقبل البدء في الإجراء مع تحمل المستخدم عمولة الدفع النقدي المحدده بالتطبيق . 🤝💵
+                </p>
+            </div>
+            <div class="img-preview-wrapper" style="display: flex; align-items: center; justify-content: center; min-height: 180px; background: rgba(15, 23, 42, 0.9);">
+                <i class="fa-solid fa-money-bill-transfer" style="font-size: 4rem; color: var(--gold-primary);"></i>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-card">
+            <div>
+                <span class="step-badge">الخطوة الثانية 🚨📍</span>
+                <div class="step-title">
+                    <i class="fa-solid fa-car-burst" style="color: var(--alert-red);"></i> طلب محامي طوارئ ورادار التواجد
+                </div>
+                <p class="step-text">
+                    يضفط المستخدم علي زر طلب محامي طوارئ الموجود داخل التطبيق والذي علامته سيارة بالاحمر لتظهر له خريطه بها موقعه وموقع الساده المحامين مستخدمي التطبيق الأقرب اليه واسفل الخريطه يظهر له ايضا اسماء الساده المحامين وتقييم كل واحد منهم والمسافه والوقت المستغرق للوصول اليه ، وهنا يجب علي الساده المحامين تفعيل زر التواجد الموجود داخل التطبيق وبعد ذلك الضغط علي زر طلب محامي طوارئ لفتح له الخريطة الموضح فيها موقع المستخدمين للتطبيق الذين بموقعه مع الاستمرار بفتح هذه النافذه كما موضح بالصورة لظهور له طلبات المستخدمين علي هذه النافذه 🗺️📲
+                </p>
+
+                <div class="alert-box">
+                    <strong>⚠️ تنبيه هام لجميع الأساتذة المحامين:</strong><br>
+                    عند ضغط الاستاذ المحامي علي زر التواجد دون فتح نافذة طلب محامي طوارئ، يعتبر التطبيق ان المحامي مستخدم التطبيق ولكنه مشغول حاليا بعمل خاص به لايعرف وقت انتهاؤه وبالتالي عند طلب المستخدم لهذا الاستاذ المحامي يبدأ التطبيق في عد تنازلي ٣٠ ثانيه لقبول المحامي ثم يتم إلغاء الطلب اتوماتيكيا بعد ال ٣٠ ثانيه لذا يجب علي السيد المحامي فتح نافذة طلب محامي طوارئ باستمرار ومتابعة الطلبات الطارئه التي تأتي له بها. ⏱️❌
+                </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div class="img-preview-wrapper">
+                    <img src="emergency_btn.jpg" alt="زر طلب محامي طوارئ" onerror="this.src='1000202569.jpg'">
+                </div>
+                <div class="img-preview-wrapper">
+                    <img src="radar_map.jpg" alt="رادار الخريطة" onerror="this.src='1000202571.jpg'">
+                </div>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-card">
+            <div>
+                <span class="step-badge">الخطوة الثالثة ⚖️📁</span>
+                <div class="step-title">
+                    <i class="fa-solid fa-folder-open" style="color: var(--gold-primary);"></i> قبول المهمة وتتبع القضايا
+                </div>
+                <p class="step-text">
+                    عند قبول الاستاذ المحامي للمهمه يتم التسعير لأتعاب للمهمة من الإدارة واذا تأخر التسعير وتحديد اتعاب المهمة (لطلبات عديده في نفس الوقت) يرجي الضغط من المستخدم علي زر تتبع القضايا واضافة المهمة عليها وسيتم الرد فورا من التطبيق عن طريق رساله توجه المستخدم بطريقة التصرف السريع . ⚡📩
+                </p>
+            </div>
+            <div class="img-preview-wrapper">
+                <img src="track_cases_btn.jpg" alt="زر تتبع القضايا" onerror="this.src='1000202570.jpg'">
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-card">
+            <div>
+                <span class="step-badge">الخطوة الرابعة 💬⭐</span>
+                <div class="step-title">
+                    <i class="fa-solid fa-comments" style="color: var(--success-green);"></i> التواصل المباشر وتقييم الخدمة
+                </div>
+                <p class="step-text">
+                    يضغط الاستاذ المحامي علي زر البدء في المهمه وسيفتح له نافذة تواصل كتابيه بينه وبين المستخدم الطالب للإجراء وبعد إنهاء المهمه يقيم كل من الطرفين ( المستخدم، والاستاذ المحامي ) بعضهما لكي يكون تقييمها ظاهر لكافة الساده المحامين والمستخدمين علي التطبيق. 🌟🤝
+                </p>
+            </div>
+            <div class="img-preview-wrapper" style="display: flex; align-items: center; justify-content: center; min-height: 180px; background: rgba(15, 23, 42, 0.9);">
+                <i class="fa-solid fa-star-half-stroke" style="font-size: 4rem; color: var(--gold-primary);"></i>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer Signature -->
+    <div class="signature-card">
+        <p style="margin-bottom: 8px;">مع خالص تمنياتي بالتوفيق والتعاون للنجاح الدائم ✨</p>
+        <h3>الأستاذ / سامح فاروق</h3>
+    </div>
+
+    <!-- JavaScript Audio Auto-Play Trigger -->
+    <script>
+        const audio = document.getElementById('bgMusic');
+        const playBtn = document.getElementById('playAudioBtn');
+        const audioIcon = document.getElementById('audioIcon');
+        const statusText = document.getElementById('audioStatusText');
+
+        // Autoplay attempt on page load & click fallback
+        window.addEventListener('DOMContentLoaded', () => {
+            audio.play().then(() => {
+                updateUI(true);
+            }).catch(() => {
+                // Browser policy blocked autoplay until user interaction
+                updateUI(false);
+            });
+        });
+
+        document.body.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => updateUI(true)).catch(() => {});
+            }
+        }, { once: true });
+
+        function toggleAudio() {
+            if (audio.paused) {
+                audio.play();
+                updateUI(true);
+            } else {
+                audio.pause();
+                updateUI(false);
+            }
+        }
+
+        function updateUI(isPlaying) {
+            if (isPlaying) {
+                audioIcon.className = 'fa-solid fa-pause';
+                statusText.innerText = 'تشغيل الموسيقى (Spring.mp3) 🎵';
+            } else {
+                audioIcon.className = 'fa-solid fa-play';
+                statusText.innerText = 'تشغيل الموسيقى 🎶';
+            }
+        }
+    </script>
+</body>
+</html>
